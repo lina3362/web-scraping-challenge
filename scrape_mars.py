@@ -107,6 +107,7 @@ mars_facts_table
 
 
 # Open browser to USGS Astrogeology site
+hemisphere.img_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 browser.visit('https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars')
 html = browser.html
 soup = bs(html, 'html.parser')
@@ -142,25 +143,3 @@ mars_dict['image_url'] = image_link
 mars_hemispheres.append(mars_dict)
 
 mars_hemispheres
-
-
-# In[80]:
-
-
-get_ipython().system('pip install ipython')
-get_ipython().system('pip install nbconvert')
-
-
-# In[82]:
-
-
-import ipython
-import nbconvert
-ipython nbconvert — to script mission_to_mars.ipynb
-
-
-# In[ ]:
-
-
-
-
