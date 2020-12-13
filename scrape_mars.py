@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[37]:
+# In[90]:
 
 
 #Dependencies
@@ -12,7 +12,7 @@ import time
 import os
 
 
-# In[38]:
+# In[91]:
 
 
 #site navigation
@@ -22,7 +22,7 @@ browser = Browser('chrome', **executable_path, headless=False)
 
 # NASA Mars News
 
-# In[39]:
+# In[92]:
 
 
 #open url
@@ -33,7 +33,7 @@ html = browser.html
 soup = bs(html, "html.parser")
 
 
-# In[40]:
+# In[93]:
 
 
 mars_title = soup.find_all('div', class_='content_title')[0].text
@@ -50,7 +50,7 @@ print(mars_paragraph)
 
 # JPL Mars Space Images - Featured Image
 
-# In[43]:
+# In[94]:
 
 
 #Open browser to url for JPL Featured Space Image
@@ -59,7 +59,7 @@ html = browser.html
 soup = bs(html, "html.parser")
 
 
-# In[49]:
+# In[95]:
 
 
 image = soup.find("img", class_="thumb")["src"]
@@ -75,7 +75,7 @@ print(featured_image_url)
 
 # Mars Facts
 
-# In[56]:
+# In[96]:
 
 
 # Use Pandas to scrape data
@@ -87,7 +87,7 @@ df.columns=['Parameter', 'Number']
 df
 
 
-# In[57]:
+# In[97]:
 
 
 #convert the data to a HTML table string
@@ -103,17 +103,17 @@ mars_facts_table
 
 # Mars Hemispheres
 
-# In[58]:
+# In[98]:
 
 
 # Open browser to USGS Astrogeology site
-hemisphere.img_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-browser.visit('https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars')
+hemisphere_img_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+browser.visit(hemisphere_img_url)
 html = browser.html
 soup = bs(html, 'html.parser')
 
 
-# In[75]:
+# In[99]:
 
 
 mars_hemispheres = []
@@ -132,7 +132,7 @@ for result in results:
     
 
 
-# In[79]:
+# In[103]:
 
 
 #Add hemisphere title to dictionary
@@ -143,3 +143,17 @@ mars_dict['image_url'] = image_link
 mars_hemispheres.append(mars_dict)
 
 mars_hemispheres
+
+
+# In[104]:
+
+
+# Exit Browser.
+browser.quit()
+
+
+# In[ ]:
+
+
+
+
